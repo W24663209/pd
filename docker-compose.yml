@@ -1,0 +1,24 @@
+version: '3'
+services:
+  providusbank:
+    build: .
+    container_name: providusbank
+    restart: always
+    ports:
+      - 6901:6901
+      - 16902:16902
+    shm_size: 1024m
+    working_dir: /home/kasm-user/app
+    entrypoint:
+      - "/dockerstartup/kasm_default_profile.sh"
+      - "/dockerstartup/vnc_startup.sh"
+      - "/dockerstartup/kasm_startup.sh"
+    environment:
+      - VNC_PW=password
+    volumes:
+      - .:/home/kasm-user/app
+    networks:
+      - proxynet
+networks:
+  proxynet:
+    name: chrome
