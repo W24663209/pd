@@ -1,4 +1,5 @@
 import openpyxl
+from utils import mysql_util
 
 
 def xlsx(path):
@@ -14,8 +15,11 @@ def xlsx(path):
     rows = sheet.iter_rows(values_only=True)
     max_row = rows.gi_frame.f_locals['max_row']
     for row in rows:
-        if index >= 17 and max_row-4 >= index:
-            print(row)
+        if index >= 17 and max_row - 4 >= index:
+            mysql_util.update(f'''
+            insert into tbl_providus_bank (post_date, actual_transaction_date, narration, value_date, debit, credit,
+                               current_balance, dr_cr, doc_num) values ('{"','".join(row)}')
+            ''')
         index += 1
     # 关闭Excel文件
     workbook.close()
