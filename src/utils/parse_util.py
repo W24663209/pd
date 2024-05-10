@@ -36,7 +36,7 @@ def xlsx(path):
             item['narration'] = row[2].replace('INWARD TRANSFER', '').replace('FROM', '')
             item['valueDate'] = row[3]
             item['debit'] = row[4]
-            item['credit'] = row[5]
+            item['credit'] = float(row[5].replace(',', ''))
             item['currentBalance'] = row[6]
             item['drCr'] = row[7]
             item['docNum'] = row[8]
