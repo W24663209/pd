@@ -107,9 +107,9 @@ class ChromeCrawl:
         self.run_js('validateForm()', '下一步')
         self.input('#PASSWORD', 'BallonJay@20568', '密码')
         self.run_js('validateFormLogin2()', '登陆')
-        time.sleep(2)
+        # time.sleep(2)
         self.click('tag:a@@text():1305016781', '账号详情:1305016781')
-        time.sleep(3)
+        # time.sleep(3)
         self.click('tag:input@@value:View Account Statement', '结算详情:View Account Statement')
         # # 在页面中查找元素
         while True:
@@ -117,7 +117,7 @@ class ChromeCrawl:
             self.run_js('document.querySelector("#datepicker").value="%s"' % date_util.dmy(-24 * 60 * 5), '开始时间')
             self.run_js('document.querySelector("#traType").value="2"', '代收')
             # self.click('#Filter0', '选择时间')
-            time.sleep(3)
+            # time.sleep(3)
             self.run_js('''
                   this.disabled = true;document.getElementById('IBS').submit();
                   ''', '订单详情')
