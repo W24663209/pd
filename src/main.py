@@ -114,7 +114,7 @@ class ChromeCrawl:
         # # 在页面中查找元素
         while True:
             # self.input('#datepicker', date_util.mdy(-24 * 60 * 5), '开始时间')
-            self.run_js('document.querySelector("#datepicker").value="%s"' % date_util.dmy(-24 * 60 * 5), '开始时间')
+            self.run_js('document.querySelector("#datepicker").value="%s"' % date_util.dmy(-24 * 60 * 10), '开始时间')
             self.run_js('document.querySelector("#traType").value="2"', '代收')
             # self.click('#Filter0', '选择时间')
             # time.sleep(3)
