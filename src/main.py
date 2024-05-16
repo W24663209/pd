@@ -103,12 +103,13 @@ class ChromeCrawl:
         # 访问网页
         self.page.get(
             'https://ibankpro.providusbank.com/IBS/Rl5IW1xkVwNzUTxYQFwIBS2012.do?TF5dRVNYViRTVS0IBS2012=Rl5IW1wb&WkNAUVdZQQIBS2012IBS2012=Xl5EV1wIBS2012')
-        self.input('#userName', 'DOMK BOUTIQUE', '账号')
+        self.input('#userName', 'PRESTON', '账号')
+        # self.input('#userName', 'DOMK BOUTIQUE', '账号')
         self.run_js('validateForm()', '下一步')
         self.input('#PASSWORD', 'BallonJay@20568', '密码')
         self.run_js('validateFormLogin2()', '登陆')
         # time.sleep(2)
-        self.click('tag:a@@text():1305016781', '账号详情:1305016781')
+        self.click('tag:a@@text():1305106691', '账号详情:1305106691')
         # time.sleep(3)
         self.click('tag:input@@value:View Account Statement', '结算详情:View Account Statement')
         # # 在页面中查找元素
