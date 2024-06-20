@@ -8,9 +8,9 @@ def get_html(result_data):
     return etree.HTML(result_data.text)
 
 
-cookies = {}
-for item in json.loads(open('1.json').read()):
-    cookies[item['name']] = item['value']
+# cookies = {}
+# for item in json.loads(open('1.json').read()):
+#     cookies[item['name']] = item['value']
 
 headers = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -46,8 +46,7 @@ proxies = {
 
 for i in range(42497):
     response = requests.get('https://www.win-source.net/product/all?pagenumber=%s' % i, impersonate="chrome100",
-                            params=params,
-                            cookies=cookies, headers=headers)
+                            params=params, headers=headers)
     # print(response.text)
     # print(response.status_code)
 
