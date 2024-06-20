@@ -1,25 +1,14 @@
 version: '3'
 services:
-  providusbank:
-    build: .
-    container_name: providusbank
+  lobe-chat:
+    image: lobehub/lobe-chat
+    container_name: lobe-chat
     restart: always
-    tty: true
-    ports:
-      - 6901:6901
-      - 16902:16902
-    shm_size: 1024m
-    working_dir: /home/kasm-user/app
-    entrypoint:
-      - "/dockerstartup/kasm_default_profile.sh"
-      - "/dockerstartup/vnc_startup.sh"
-      - "/dockerstartup/kasm_startup.sh"
     environment:
-      - VNC_PW=password
-    volumes:
-      - .:/home/kasm-user/app
-    networks:
-      - proxynet
-networks:
-  proxynet:
-    name: chrome
+      - OPENAI_API_KEY=sk-proj-xZB4BnCoUTpJVTbcLYI7T3BlbkFJ0yi1nGTplCOWXHNwQDTk
+      - ACCESS_CODE=666666WW
+    ports:
+      - "3210:3210"
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run --token eyJhIjoiOTdjODgwOTRmZDRhNTNjYzQ5MjJjOGFiMThmNTczNmIiLCJ0IjoiNWFlODk4YzctMzJlOC00OTYwLTg3ZDgtMmYwMDljYmYxYmM0IiwicyI6Ik1EWTRPREF5WmpNdFpUazRZaTAwTjJZNExXRmpNelV0WkRFME9HVmpPVGcyTVRnMCJ9

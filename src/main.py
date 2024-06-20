@@ -55,7 +55,7 @@ class ChromeCrawl:
 
     def read_xlsx(self, name):
         thread_pool = concurrent.futures.ThreadPoolExecutor(max_workers=10)
-        parse_util.xlsx('%s/download/%s' % (path,name))
+        parse_util.xlsx('%s/download/%s' % (path, name))
         # for text in open('src/download/STATEMENT.csv').read().split('\n')[19:-5]:
         #     pass
         thread_pool.shutdown(wait=True)
@@ -70,7 +70,7 @@ class ChromeCrawl:
 
     def input(self, css, value, msg, count=0):
         if count >= 10:
-            return
+            return self.start()
         try:
             print(f'匹配:{css}\t输入:{msg}\t内容:{value}')
             self.page.ele(css).input(value)
@@ -81,7 +81,7 @@ class ChromeCrawl:
     def click(self, css, msg, count=0):
         try:
             if count >= 10:
-                return
+                return self.start()
             print(f'匹配:{css}\t点击:{msg}')
             self.page.ele(css).click()
         except:
@@ -92,12 +92,14 @@ class ChromeCrawl:
         print(f'{msg}\t执行js:{css}\t重试次数:{count}')
         try:
             if count >= 10:
-                return
+                return self.start()
             self.page.run_js(css)
+            return True
         except:
             time.sleep(1)
             count += 1
-            self.run_js(css, count)
+            self.run_js(css, msg, count)
+            return True
 
     def start(self):
         # 访问网页

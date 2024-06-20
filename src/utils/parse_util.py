@@ -40,6 +40,7 @@ def xlsx(path):
             item['currentBalance'] = row[6]
             item['drCr'] = row[7]
             item['docNum'] = row[8]
+            print(item)
             thread_pool.submit(save, item)
         index += 1
     # 关闭Excel文件
