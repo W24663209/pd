@@ -1,14 +1,9 @@
 version: '3'
 services:
-  lobe-chat:
-    image: lobehub/lobe-chat
-    container_name: lobe-chat
+  pd:
+    image: python:3.8
+    container_name: pd
     restart: always
-    environment:
-      - OPENAI_API_KEY=sk-proj-xZB4BnCoUTpJVTbcLYI7T3BlbkFJ0yi1nGTplCOWXHNwQDTk
-      - ACCESS_CODE=666666WW
-    ports:
-      - "3210:3210"
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run --token eyJhIjoiOTdjODgwOTRmZDRhNTNjYzQ5MjJjOGFiMThmNTczNmIiLCJ0IjoiNWFlODk4YzctMzJlOC00OTYwLTg3ZDgtMmYwMDljYmYxYmM0IiwicyI6Ik1EWTRPREF5WmpNdFpUazRZaTAwTjJZNExXRmpNelV0WkRFME9HVmpPVGcyTVRnMCJ9
+    tty: true
+    volumes:
+      - .:/app
